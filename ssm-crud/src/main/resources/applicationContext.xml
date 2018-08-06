@@ -50,7 +50,7 @@
 	<aop:config>
 		<!-- 切入点表达式 -->
 		<aop:pointcut
-			expression="execution(* com.javaboy.service..*(..)" id="txPointCut" />
+			expression="execution(* com.javaboy.service..*(..))" id="txPointCut" />
 		<!-- 事务增强 -->
 		<aop:advisor advice-ref="txAdvice"
 			pointcut-ref="txPointCut" />
