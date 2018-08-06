@@ -72,9 +72,6 @@ public class Hello {
 			return false;
 		return true;
 	}
-	
-	
-
 }
 
 class Outer {
