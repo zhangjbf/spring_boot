@@ -22,7 +22,7 @@
 	<!-- 数据源 -->
 	<bean id="pooledDataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="${jdbc.jdbcUrl=}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 		<property name="driverClass" value="${jdbc.driverClass}"></property>
 		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
@@ -30,9 +30,10 @@
 	<!-- 配置和mybatis整合 -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configuration" value="classpath:mybatis.xml"></property>
-		<property name="dataSource" value="pooledDataSource"></property>
-		<property name="mapperLocations" value="classpath:mapper"></property>
+		<property name="configLocation" value="classpath:mybatis.xml"></property>
+		<property name="dataSource" ref="pooledDataSource"></property>
+		<property name="mapperLocations"
+			value="classpath:mapper/*.xml"></property>
 	</bean>
 
 	<!-- 配置扫描器，将mybatis接口扫描到ioc容器中 -->
@@ -43,8 +44,13 @@
 	<!-- 事务控制 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" value="pooledDataSource"></property>
+		<property name="dataSource" ref="pooledDataSource"></property>
 	</bean>
+
+	<!-- Aop自动扫描 -->
+	<aop:aspectj-autoproxy />
+
+	<bean id="servieAspect" class="com.javaboy.utils.ServieAspect"></bean>
 
 	<!-- 开启基于注解的事务 -->
 	<aop:config>
@@ -54,7 +60,14 @@
 		<!-- 事务增强 -->
 		<aop:advisor advice-ref="txAdvice"
 			pointcut-ref="txPointCut" />
+
+		<aop:aspect ref="servieAspect">
+			<aop:before method="printJavaboy"
+				pointcut-ref="txPointCut" />
+		</aop:aspect>
 	</aop:config>
+
+
 	<tx:advice id="txAdvice"
 		transaction-manager="transactionManager">
 		<tx:attributes>
@@ -63,4 +76,6 @@
 			<tx:method name="get*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
+
+
 </beans>

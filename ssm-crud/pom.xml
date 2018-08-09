@@ -22,6 +22,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.3.18.RELEASE</version>
 		</dependency>
+
 		<!--spring 面向切面编程 spring aspect -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
 		<dependency>
@@ -61,7 +62,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.12</version>
+			<version>5.1.32</version>
 		</dependency>
 		<!-- jstl -->
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
