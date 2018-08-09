@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.yonyou.app.service.ITaskBillService;
 
@@ -18,7 +19,7 @@ import com.yonyou.app.service.ITaskBillService;
  *
  *     联投项目需求
  */
-@Controller
+@RestController
 @RequestMapping("/taskbill")
 public class TaskBillController {
 
@@ -26,7 +27,6 @@ public class TaskBillController {
 	private ITaskBillService taskBillService;
 
 	@RequestMapping("/jsonbill")
-	@ResponseBody
 	public String queryJsonBill(String userId, String taskId) {
 		try {
 			return taskBillService.queryJsonBill(userId, taskId);
@@ -37,7 +37,6 @@ public class TaskBillController {
 	}
 
 	@RequestMapping("/getTaskActions")
-	@ResponseBody
 	public String getTaskActions(String taskId) {
 		try {
 			return taskBillService.getTaskActions(taskId);
@@ -48,7 +47,6 @@ public class TaskBillController {
 	}
 
 	@RequestMapping("/doAgree")
-	@ResponseBody
 	public String doAgree(String userId, String taskId, String note) {
 		try {
 			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
@@ -60,7 +58,6 @@ public class TaskBillController {
 	}
 
 	@RequestMapping("/doDisAgree")
-	@ResponseBody
 	public String doDisAgree(String userId, String taskId, String note) {
 		try {
 			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
@@ -72,7 +69,6 @@ public class TaskBillController {
 	}
 
 	@RequestMapping("/doReject")
-	@ResponseBody
 	public String doReject(String userId, String taskId, String note) {
 		try {
 			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
