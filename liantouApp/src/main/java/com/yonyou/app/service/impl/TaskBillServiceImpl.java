@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Service;
 
-import com.yonyou.service.ITaskBillService;
+import com.yonyou.app.service.ITaskBillService;
 
 import nc.itf.app.task.IAppTaskService.IAppTaskServicePortTypeProxy;
 
@@ -120,17 +120,6 @@ public class TaskBillServiceImpl implements ITaskBillService {
 		 outputStream.close();
 	}
 
-	/**
-	 *
-	 * @param userId
-	 * @return
-	 * @throws Exception
-	 * @see com.yonyou.service.ITaskBillService#getPsndetail(java.lang.String)
-	 */
-	@Override
-	public String getPsnDetail(String userId) throws Exception {
-		return null;
-	}
 
 	/**
 	 *

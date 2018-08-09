@@ -62,13 +62,6 @@ public interface ITaskBillService {
 
 	/**
 	 *
-	 * @param userId
-	 * @return 
-	 */
-	public String getPsnDetail(String userId) throws Exception;
-
-	/**
-	 *
 	 * @param taskId
 	 * @return
 	 * @throws Exception
