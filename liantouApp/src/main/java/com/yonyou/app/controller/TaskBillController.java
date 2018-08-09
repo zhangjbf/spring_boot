@@ -4,9 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yonyou.app.service.ITaskBillService;
@@ -30,6 +28,16 @@ public class TaskBillController {
 	public String queryJsonBill(String userId, String taskId) {
 		try {
 			return taskBillService.queryJsonBill(userId, taskId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping
+	public String getApproveDetail(String userId,String taskId) {
+		try {
+			return taskBillService.getApproveDetail(userId, taskId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -90,5 +98,5 @@ public class TaskBillController {
 			e.printStackTrace();
 		}
 	}
-
+	
 }

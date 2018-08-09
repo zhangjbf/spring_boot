@@ -107,11 +107,6 @@ public class TaskBillServiceImpl implements ITaskBillService {
 		byte[] bytes = messageAttachment.getBytes();
 		byte[] decode = Base64.decodeBase64(bytes);
 
-//		File file = new File("F:\\javaboy.jpg");
-//		OutputStream os = new FileOutputStream(file);
-//		os.write(decode);
-//		os.flush();
-//		os.close();
 
 		 response.setContentType("image/jpg");
 		 ServletOutputStream outputStream = response.getOutputStream();
@@ -133,6 +128,11 @@ public class TaskBillServiceImpl implements ITaskBillService {
 	public String getTaskActions(String taskId) throws Exception {
 		String taskButtonList = proxy.getTaskButtonList(PK_GROUP, taskId);
 		return taskButtonList;
+	}
+
+	@Override
+	public String getApproveDetail(String userId, String taskId) throws Exception {
+		return null;
 	}
 
 }

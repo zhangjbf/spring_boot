@@ -68,5 +68,14 @@ public interface ITaskBillService {
 	 */
 	public String getTaskActions(String taskId) throws Exception;
 
+	/**
+	 * 获取审批流程
+	 * 
+	 * @param userId
+	 * @param taskId
+	 * @return String
+	 * @throws Exception
+	 */
+	public String getApproveDetail(String userId, String taskId) throws Exception;
 
 }
