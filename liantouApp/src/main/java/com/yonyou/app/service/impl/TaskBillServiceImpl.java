@@ -107,14 +107,12 @@ public class TaskBillServiceImpl implements ITaskBillService {
 		byte[] bytes = messageAttachment.getBytes();
 		byte[] decode = Base64.decodeBase64(bytes);
 
-
-		 response.setContentType("image/jpg");
-		 ServletOutputStream outputStream = response.getOutputStream();
-		 outputStream.write(decode);
-		 outputStream.flush();
-		 outputStream.close();
+		response.setContentType("image/jpg");
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(decode);
+		outputStream.flush();
+		outputStream.close();
 	}
-
 
 	/**
 	 *
@@ -122,7 +120,8 @@ public class TaskBillServiceImpl implements ITaskBillService {
 	 * @param taskId
 	 * @return
 	 * @throws Exception
-	 * @see com.yonyou.service.ITaskBillService#getTaskActions(java.lang.String, java.lang.String)
+	 * @see com.yonyou.service.ITaskBillService#getTaskActions(java.lang.String,
+	 *      java.lang.String)
 	 */
 	@Override
 	public String getTaskActions(String taskId) throws Exception {
@@ -132,7 +131,8 @@ public class TaskBillServiceImpl implements ITaskBillService {
 
 	@Override
 	public String getApproveDetail(String userId, String taskId) throws Exception {
-		return null;
+		String approvedDetail = proxy.getApprovedDetail(PK_GROUP, userId, taskId, null, null);
+		return approvedDetail;
 	}
 
 }

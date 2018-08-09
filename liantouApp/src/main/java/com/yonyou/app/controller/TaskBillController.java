@@ -34,7 +34,7 @@ public class TaskBillController {
 		return null;
 	}
 	
-	@RequestMapping
+	@RequestMapping("/getApproveDetail")
 	public String getApproveDetail(String userId,String taskId) {
 		try {
 			return taskBillService.getApproveDetail(userId, taskId);
