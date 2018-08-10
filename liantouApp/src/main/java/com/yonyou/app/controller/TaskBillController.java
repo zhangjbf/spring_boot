@@ -57,7 +57,7 @@ public class TaskBillController {
 	@RequestMapping("/doAgree")
 	public String doAgree(String userId, String taskId, String note) {
 		try {
-			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
+//			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
 			return taskBillService.doAgree(userId, taskId, note);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,7 +68,7 @@ public class TaskBillController {
 	@RequestMapping("/doDisAgree")
 	public String doDisAgree(String userId, String taskId, String note) {
 		try {
-			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
+//			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
 			return taskBillService.doDisAgree(userId, taskId, note);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,7 +79,7 @@ public class TaskBillController {
 	@RequestMapping("/doReject")
 	public String doReject(String userId, String taskId, String note) {
 		try {
-			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
+//			note = new String(note.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
 			return taskBillService.doReject(userId, taskId, note);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class TaskBillController {
 	public void getMessageAttachment(String userId, String fileId, HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-			fileId = new String(fileId.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
+//			fileId = new String(fileId.getBytes("ISO8859-1"), "UTF-8");// 解決get提交审批批语乱码
 			fileId = fileId.replaceAll(",", "&#%");
 			taskBillService.getMessageAttachment(userId, fileId, request, response);
 		} catch (Exception e) {
